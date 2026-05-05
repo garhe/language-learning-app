@@ -1,0 +1,248 @@
+:root {
+  --bg: #f5f3ea;
+  --ink: #1f1f1b;
+  --muted: #58574f;
+  --card: rgba(255, 255, 255, 0.8);
+  --line: rgba(24, 22, 16, 0.12);
+  --accent: #0d766e;
+  --accent-2: #d45d3f;
+  --chip: #f0e6d1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 15% 20%, #e6f7ef 0%, transparent 40%),
+    radial-gradient(circle at 85% 10%, #ffe5ce 0%, transparent 35%),
+    linear-gradient(120deg, #f9f6ee, #efe9da 55%, #f8f2e3);
+}
+
+.aurora {
+  position: fixed;
+  inset: -20% -10% auto;
+  height: 55vh;
+  background: conic-gradient(from 180deg at 50% 50%, #b7e4c7, #ffd6a5, #a9def9, #b7e4c7);
+  filter: blur(80px);
+  opacity: 0.35;
+  pointer-events: none;
+  animation: drift 16s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  from {
+    transform: translateX(-5%) rotate(-2deg);
+  }
+  to {
+    transform: translateX(5%) rotate(2deg);
+  }
+}
+
+.layout {
+  width: min(1040px, 92vw);
+  margin: 40px auto 60px;
+  display: grid;
+  gap: 22px;
+}
+
+.hero h1 {
+  font-family: "Fraunces", serif;
+  font-size: clamp(2rem, 5vw, 3.7rem);
+  line-height: 1.06;
+  margin: 0 0 10px;
+  max-width: 18ch;
+}
+
+.eyebrow {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin: 0 0 12px;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+.panel {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--card);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.06);
+  padding: 20px;
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+select,
+input,
+textarea {
+  font-family: inherit;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #fff;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+}
+
+.btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, var(--accent), #2b9a90);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(13, 118, 110, 0.32);
+}
+
+.btn.secondary {
+  background: linear-gradient(135deg, var(--accent-2), #e49349);
+}
+
+.status {
+  min-height: 1.4em;
+  margin: 10px 0 0;
+  color: var(--muted);
+}
+
+.lesson-header p {
+  color: var(--muted);
+  margin: 6px 0 0;
+}
+
+.chips {
+  margin: 12px 0;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  background: var(--chip);
+  border: 1px solid #e2d5ba;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 0.82rem;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+  background: #fff;
+  margin: 12px 0;
+}
+
+.score {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.score .kpi {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px;
+  background: #fcfbf8;
+}
+
+.chat-box {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px;
+  max-height: 260px;
+  overflow: auto;
+  background: #fffcf5;
+}
+
+.bubble {
+  margin: 8px 0;
+  padding: 8px 10px;
+  border-radius: 10px;
+  max-width: 85%;
+}
+
+.bubble.user {
+  margin-left: auto;
+  background: #d8f4ef;
+}
+
+.bubble.ai {
+  background: #fbe2d4;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.small {
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+
+.avatar-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 10px;
+  align-items: end;
+}
+
+#avatarVideo {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 12px;
+  min-height: 190px;
+  background: linear-gradient(120deg, #121926, #1f2f3e);
+}
+
+@media (max-width: 780px) {
+  .grid,
+  .score,
+  .avatar-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .layout {
+    margin-top: 22px;
+  }
+}

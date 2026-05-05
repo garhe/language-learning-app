@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinguaStage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="aurora" aria-hidden="true"></div>
+    <main class="layout">
+      <header class="hero">
+        <p class="eyebrow">Azure Foundry Language Coach</p>
+        <h1>Build reading confidence and real conversation fluency.</h1>
+        <p class="subtitle">Pick your language, level, and mode. The AI generates the lesson, then scores your speaking.</p>
+      </header>
+
+      <section class="panel controls">
+        <h2>1. Setup your learning session</h2>
+        <div class="grid">
+          <label>
+            Language
+            <select id="language">
+              <option value="english">English</option>
+              <option value="mandarin">Chinese (Mandarin)</option>
+              <option value="french">French</option>
+              <option value="japanese">Japanese</option>
+              <option value="spanish">Spanish</option>
+            </select>
+          </label>
+          <label>
+            Level
+            <select id="level">
+              <option value="basic">Basic</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="pro">Pro</option>
+            </select>
+          </label>
+          <label>
+            Mode
+            <select id="mode">
+              <option value="read">Read Aloud + Pronunciation Score</option>
+              <option value="conversation">Conversation with AI + Overall Score</option>
+            </select>
+          </label>
+        </div>
+        <button id="generateBtn" class="btn">Generate Learning Content</button>
+        <p id="status" class="status"></p>
+      </section>
+
+      <section class="panel" id="lessonPanel" hidden>
+        <h2>2. Generated lesson</h2>
+        <div class="lesson-header">
+          <h3 id="lessonTitle"></h3>
+          <p id="lessonObjective"></p>
+        </div>
+        <div class="chips">
+          <span id="topicChip" class="chip"></span>
+          <span id="visualChip" class="chip"></span>
+        </div>
+        <div id="modeContent"></div>
+      </section>
+
+      <section class="panel" id="avatarPanel">
+        <h2>Avatar (optional preview)</h2>
+        <p class="small">If your Azure Speech resource supports Avatar, start a live avatar stream here.</p>
+        <div class="avatar-actions">
+          <label>
+            Character
+            <input id="avatarCharacter" value="lisa" />
+          </label>
+          <label>
+            Style
+            <input id="avatarStyle" value="casual-sitting" />
+          </label>
+          <button id="startAvatarBtn" class="btn secondary">Start Avatar</button>
+        </div>
+        <video id="avatarVideo" autoplay playsinline></video>
+      </section>
+    </main>
+
+    <script src="https://aka.ms/csspeech/jsbrowserpackageraw"></script>
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
