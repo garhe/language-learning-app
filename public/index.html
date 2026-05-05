@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinguaStage — AI Language Coach</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-blobs" aria-hidden="true">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+
+    <!-- NAV -->
+    <nav class="topnav">
+      <div class="nav-brand">
+        <span class="nav-logo">🌐</span>
+        <span class="nav-name">LinguaStage</span>
+      </div>
+      <div class="topnav-right">
+        <div class="coach-prefs">
+          <button class="btn-ghost theme-btn" id="themeBtn" type="button">Theme</button>
+          <button class="btn-ghost theme-btn" id="restartTopBtn" type="button">Start over</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ONBOARDING WIZARD -->
+    <div id="wizard" class="wizard">
+
+      <div class="step" id="step-language">
+        <div class="step-header">
+          <h1>Choose your learning language</h1>
+          <p>Choose the language you'd like to practice today.</p>
+        </div>
+        <div class="card-grid" id="languageCards">
+          <button class="choice-card" data-value="english">
+            <span class="card-flag">🇬🇧</span>
+            <span class="card-label">English</span>
+          </button>
+          <button class="choice-card" data-value="mandarin">
+            <span class="card-flag">🇨🇳</span>
+            <span class="card-label">Chinese<br/><small>Mandarin</small></span>
+          </button>
+          <button class="choice-card" data-value="french">
+            <span class="card-flag">🇫🇷</span>
+            <span class="card-label">French</span>
+          </button>
+          <button class="choice-card" data-value="japanese">
+            <span class="card-flag">🇯🇵</span>
+            <span class="card-label">Japanese</span>
+          </button>
+          <button class="choice-card" data-value="spanish">
+            <span class="card-flag">🇪🇸</span>
+            <span class="card-label">Spanish</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="step hidden" id="step-level">
+        <div class="step-header">
+          <h1>How comfortable are you right now?</h1>
+          <p>Be honest — we'll tailor the content to match.</p>
+        </div>
+        <div class="card-grid level-grid" id="levelCards">
+          <button class="choice-card level-card" data-value="basic">
+            <span class="card-icon">🌱</span>
+            <span class="card-label">Basic</span>
+            <span class="card-desc">Zero knowledge, starting from scratch</span>
+          </button>
+          <button class="choice-card level-card" data-value="intermediate">
+            <span class="card-icon">🌿</span>
+            <span class="card-label">Intermediate</span>
+            <span class="card-desc">Know basics, can handle some daily conversations</span>
+          </button>
+          <button class="choice-card level-card" data-value="pro">
+            <span class="card-icon">🌳</span>
+            <span class="card-label">Pro</span>
+            <span class="card-desc">Near-native, want to polish and perfect</span>
+          </button>
+        </div>
+        <button class="btn-back" id="backToLanguage">← Back</button>
+      </div>
+
+      <div class="step hidden" id="step-mode">
+        <div class="step-header">
+          <h1>Pick your practice style</h1>
+          <p>Pick a mode and the AI will generate your lesson.</p>
+        </div>
+        <div class="card-grid mode-grid" id="modeCards">
+          <button class="choice-card mode-card" data-value="read">
+            <span class="card-icon">📖</span>
+            <span class="card-label">Read Aloud</span>
+            <span class="card-desc">Read a short text out loud and get a pronunciation score with detailed feedback</span>
+          </button>
+          <button class="choice-card mode-card" data-value="conversation">
+            <span class="card-icon">💬</span>
+            <span class="card-label">Conversation</span>
+            <span class="card-desc">Chat with an AI tutor on a topic, then get an overall fluency and accuracy score</span>
+          </button>
+        </div>
+        <button class="btn-back" id="backToTopic">← Back</button>
+      </div>
+
+      <div class="step hidden" id="step-topic">
+        <div class="step-header">
+          <h1>What do you want to talk about?</h1>
+          <p>Pick a topic and the AI will build your lesson around it.</p>
+        </div>
+        <div class="card-grid" id="topicCards"></div>
+        <button class="btn-back" id="backToLevel">← Back</button>
+      </div>
+
+      <div class="step hidden" id="step-voice-avatar">
+        <div class="step-header">
+          <h1>Choose your AI teacher</h1>
+          <p>Pick a voice and avatar for your lesson.</p>
+        </div>
+        <p class="step-subhead">Voice</p>
+        <div class="card-grid" id="voiceCards"></div>
+        <p class="step-subhead">Avatar</p>
+        <div class="card-grid" id="avatarCards">
+          <button class="choice-card" data-value="lisa">
+            <span class="card-icon">👩</span>
+            <span class="card-label">Lisa</span>
+            <span class="card-desc">Friendly, casual</span>
+          </button>
+          <button class="choice-card" data-value="lori">
+            <span class="card-icon">👩‍💼</span>
+            <span class="card-label">Lori</span>
+            <span class="card-desc">Professional</span>
+          </button>
+          <button class="choice-card" data-value="meg">
+            <span class="card-icon">👩‍🏫</span>
+            <span class="card-label">Meg</span>
+            <span class="card-desc">Teacher style</span>
+          </button>
+        </div>
+        <div class="wizard-actions">
+          <button class="btn-back" id="backToMode">← Back</button>
+          <button class="btn" id="startLessonBtn">Start Lesson →</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- LESSON AREA (hidden until generated) -->
+    <div id="lessonArea" class="lesson-area hidden">
+
+      <!-- Summary bar -->
+      <div class="session-bar hidden">
+        <div class="session-tags" id="sessionTags"></div>
+        <button class="btn-ghost" id="restartBtn">↩ Start over</button>
+      </div>
+
+      <!-- Lesson card -->
+      <div class="lesson-card">
+        <div class="lesson-meta">
+          <h2 id="lessonTitle"></h2>
+          <p id="lessonObjective"></p>
+          <div class="chips" id="lessonChips"></div>
+        </div>
+
+        <section class="visual-panel">
+          <div class="visual-media-wrap">
+            <img id="visualImage" alt="Lesson scene illustration" />
+            <div id="visualFallback" class="visual-fallback" hidden>
+              <p>Scene preview unavailable. Continue your lesson below.</p>
+            </div>
+            <div class="avatar-overlay" id="avatarOverlay" title="AI Teacher Avatar">
+              <video id="avatarVideo" autoplay playsinline></video>
+              <div class="avatar-fallback-orb" id="avatarFallbackOrb"></div>
+            </div>
+          </div>
+        </section>
+
+        <div id="modeContent"></div>
+
+        <section class="subtitle-panel">
+          <button class="btn-ghost subtitle-toggle" id="subtitleToggle">Show full conversation</button>
+          <div class="subtitle-history hidden" id="subtitleHistoryWrap">
+            <ul id="subtitleHistory"></ul>
+          </div>
+        </section>
+      </div>
+
+    </div>
+
+    <!-- Hidden selects (kept for JS compatibility) -->
+    <select id="language" class="hidden-select"></select>
+    <select id="level" class="hidden-select"></select>
+    <select id="mode" class="hidden-select"></select>
+    <select id="voiceSelect" class="hidden-select"></select>
+    <select id="avatarSelect" class="hidden-select">
+      <option value="lisa">Lisa</option>
+      <option value="lori">Lori</option>
+      <option value="meg">Meg</option>
+    </select>
+
+    <!-- Loading overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+      <div class="loading-flyout">
+        <div class="loading-spinner"></div>
+        <p class="loading-label">Generating your lesson…</p>
+      </div>
+    </div>
+
+    <script src="https://aka.ms/csspeech/jsbrowserpackageraw"></script>
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
